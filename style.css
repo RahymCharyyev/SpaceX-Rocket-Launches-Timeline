@@ -1,0 +1,76 @@
+:root {
+  --primary_blue: #3c99cd;
+  --dark_text: #282a33;
+  --light_dark: #404248;
+  --white: #fff;
+  --link_hover: #05cac3;
+  --h1: 4.5em;
+  --h2: 3.25em;
+  --h3: 2em;
+  --h4: 1.5em;
+  --link: 1.25em;
+  --text: 1.125em;
+  --light: 300;
+  --regular: 400;
+  --semi-bold: 600;
+  --bold: 700;
+}
+
+body {
+  font-family: "Trispace", sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.header {
+  width: 100%;
+  height: 90vh;
+  background: url("./img/bg.jpg") no-repeat top center/ cover;
+}
+
+.header__nav {
+  height: 10vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  justify-content: center;
+  position: fixed;
+}
+
+.header__nav a {
+  cursor: pointer;
+  color: var(--white);
+  font-size: var(--text);
+  font-weight: var(--semi-bold);
+  text-align: center;
+  text-decoration: none;
+  align-self: center;
+  transition: 0.2s;
+}
+
+.header__nav a:hover {
+  color: var(--link_hover);
+}
+
+.header__nav-link img {
+  width: 200px;
+  height: 50px;
+}
+
+.header__title {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 13% 16%;
+}
+
+.header__title-h1 {
+  color: var(--white);
+  padding-bottom: 1.5em;
+}
+
+.header__title-p {
+  width: 25vw;
+  color: var(--white);
+  line-height: 1.5em;
+}
