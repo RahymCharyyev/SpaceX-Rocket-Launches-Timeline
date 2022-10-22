@@ -16,27 +16,46 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <nav class="header__nav">
-            <a href="#" class="header__nav-link"><img src="./img/header__logo.png" alt="SpaceX logo"></a>
-            <a href="#" class="header__nav-link">About</a>
-            <a href="#" class="header__nav-link">Rocket Launch Timeline</a>
-            <a href="#" class="header__nav-link">Contacts</a>
+            <a href="#header" class="header__nav-link"><img src="./img/header__logo.png" alt="SpaceX logo"></a>
+            <a href="#about" class="header__nav-link">ABOUT</a>
+            <a href="#launches" class="header__nav-link">LAUNCHES</a>
+            <a href="#contacts" class="header__nav-link">CONTACTS</a>
         </nav>
         <div class="header__title">
-            <h1 class="header__title-h1">What is SpaceX?</h1>
-            <p class="header__title-p">SpaceX, in full Space Exploration Technologies Corporation, American aerospace
-                company
-                founded in 2002 that helped usher
-                in the era of commercial spaceflight. It was the first private company to successfully launch and return
-                a
-                spacecraft
-                from Earth orbit and the first to launch a crewed spacecraft and dock it with the International Space
-                Station (ISS).
-                Headquarters are in Hawthorne, California.</p>
+            <p class="header__title-p">“You want to wake up in the morning and think the future is going to be great -
+                and
+                that’s what being a spacefaring
+                civilization is all about. It’s about believing in the future and thinking that the future will be
+                better
+                than the past.
+                And I can’t think of anything more exciting than going out there and being among the stars.”
+            </p>
+            <h1 class="header__title-h1"> - ELON MUSK, CEO OF SPACEX</h1>
         </div>
     </header>
-    <div class="launches"></div>
+    <div class="about" id="about">
+        <h2 class="about__title">ABOUT</h2>
+        <p class=""></p>
+        <p class="about__text">SpaceX, in full Space Exploration Technologies Corporation, American aerospace
+            company
+            founded in 2002 that helped usher
+            in the era of commercial spaceflight. It was the first private company to successfully launch and return
+            a
+            spacecraft
+            from Earth orbit and the first to launch a crewed spacecraft and dock it with the International Space
+            Station (ISS).
+            Headquarters are in Hawthorne, California.</p>
+        <a href="#" class="about__link">Learn more...</a>
+    </div>
+    <div class="launches" id="launches">
+        <h2 class="launches__title">LAUNCHES</h2>
+        <div class="launches__image"></div>
+        <ul class="launches__list">
+        </ul>
+        <button class="button">BUTTON</button>
+    </div>
 </body>
 <script src="./script.js"></script>
 
