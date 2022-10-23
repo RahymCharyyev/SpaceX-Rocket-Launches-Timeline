@@ -17,11 +17,11 @@
 
 <body>
     <header class="header" id="header">
-        <nav class="header__nav">
+        <nav class="header__nav" id="nav">
             <a href="#header" class="header__nav-link"><img src="./img/header__logo.png" alt="SpaceX logo"></a>
             <a href="#about" class="header__nav-link">ABOUT</a>
             <a href="#launches" class="header__nav-link">LAUNCHES</a>
-            <a href="#contacts" class="header__nav-link">CONTACTS</a>
+            <a href="#launches" class="header__nav-link">FOLLOW US</a>
         </nav>
         <div class="header__title">
             <p class="header__title-p">“You want to wake up in the morning and think the future is going to be great -
@@ -51,12 +51,21 @@
     </div>
     <div class="launches" id="launches">
         <h2 class="launches__title">LAUNCHES</h2>
-        <div class="launches__image"></div>
-        <ul class="launches__list">
-        </ul>
-        <button class="button">BUTTON</button>
+        <div class="launches__layout"></div>
     </div>
+    <footer class="follow">
+        <a href="#header">SPACEX © 2022</a>
+        <a href="https://twitter.com/spacex">TWITTER</a>
+        <a href="https://www.youtube.com/spacex">YOUTUBE</a>
+        <a href="https://www.instagram.com/spacex/">INSTAGRAM</a>
+        <a href="https://www.flickr.com/photos/spacex">FLICKR</a>
+        <a href="https://www.linkedin.com/company/spacex">LINKEDIN</a>
+        <a href="https://www.spacex.com/media/privacy_policy_spacex.pdf">PRIVACY POLICY</a>
+    </footer>
 </body>
+<script type="text/javascript" src="./jquery.min.js"></script>
+<script src="./nav.js"></script>
 <script src="./script.js"></script>
+<script src="./scroll.js"></script>
 
 </html>

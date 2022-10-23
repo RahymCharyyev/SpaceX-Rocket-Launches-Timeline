@@ -1,41 +1,37 @@
-const button = document.querySelector(".button");
 const BASE_URL = "https://api.spacexdata.com/v5/";
 async function getLaunches() {
   const resLaunches = await fetch(BASE_URL + "launches");
   const launchesData = await resLaunches.json();
   if (resLaunches.status !== 200) {
     return {
-      message: "Error Getting Launches",
+      message: alert(
+        "Error Getting Launches. May be API is blocked in your network. Check your internet connection and try again."
+      ),
     };
   }
   let launches = launchesData.map((launch) => {
-    const image =
-      launch.links.patch.small ||
-      "https://pbs.twimg.com/profile_images/1082744382585856001/rH_k3PtQ_400x400.jpg";
+    const image = launch.links.patch.small || "./img/launch.jpg";
+    const details = launch.details || "";
     return {
       name: launch.name,
       image,
       date: launch.date_local,
+      details,
     };
   });
   return launches;
 }
 
-const launchesImg = document.querySelector(".launches__image");
 const render = (launches) => {
   for (let i = 0; i < launches.length; i++) {
-    document.querySelector(
-      ".launches__list"
-    ).innerHTML += `<div class = "launch__container">
-                        <div class="launch__info">
-                            <p>name: ${launches[i].name}</p>
-                            <p>date: ${new Date(
-                              launches[i].date
-                            ).getFullYear()}</p>
-                        </div>
-                        <div class = "launch__img">
-                        </div>
-                    </div>`;
+    document.querySelector(".launches__layout").innerHTML += `
+     <div class="launches__layout-cont">
+      <div class="launches__layout-cont-block">
+        <img src="${launches[i].image}" alt="Image of Rocket Launch">
+        <p>${new Date(launches[i].date).toLocaleDateString()}</p>
+        <h2>${launches[i].name}</h2>
+      </div>
+    </div>`;
   }
 };
 
