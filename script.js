@@ -25,16 +25,21 @@ async function getLaunches() {
 const render = (launches) => {
   for (let i = 0; i < launches.length; i++) {
     document.querySelector(".launches__layout").innerHTML += `
-     <div class="launches__layout-cont">
-      <div class="launches__layout-cont-block">
-        <img src="${launches[i].image}" alt="Image of Rocket Launch">
-        <p>${new Date(launches[i].date).toLocaleDateString()}</p>
-        <h2>${launches[i].name}</h2>
+    <div class="launches__layout-cont">
+      <div class="launches__layout-cont-block" onClick={myFunction(${i})}>
+          <img src="${launches[i].image}" alt="Image of Rocket Launch">
+          <p>${new Date(launches[i].date).toLocaleDateString()}</p>
+          <h2>${launches[i].name}</h2>
+          <p class="launch__title">${launches[i].details}</p>
       </div>
-    </div>`;
+    </div>
+    `;
   }
 };
-
+function myFunction() {
+  document.querySelector(".launch__title").classList.toggle("visible");
+  console.log(document.querySelector(".launch__title"));
+}
 getLaunches().then((launches) => {
   render(launches);
 });

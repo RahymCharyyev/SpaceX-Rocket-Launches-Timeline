@@ -16,10 +16,13 @@
   --bold: 700;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Trispace", sans-serif;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   color: var(--white);
   background-color: #000;
 }
@@ -101,6 +104,11 @@ body {
   color: var(--white);
   text-decoration: none;
   padding: 2em 0 0 15.5em;
+  transition: 0.5s;
+}
+
+.about__link:hover {
+  color: var(--link_hover);
 }
 
 .launches__layout {
