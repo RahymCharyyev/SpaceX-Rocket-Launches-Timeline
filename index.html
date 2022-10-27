@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="The landing page that use SPACEX public API to display the timeline of rocket launches of the SPACEX company" />
     <title>SpaceX Rocket Launches</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +39,12 @@
 <body>
     <header class="header" id="header">
         <nav class="header__nav" id="nav">
-            <a href="#header" class="header__nav-link"><img src="./img/header__logo.png" alt="SpaceX logo"></a>
+            <a href="#header" class="header__nav-link">
+                <picture>
+                    <source srcset="./img/header__logo.webp" type="image/webp">
+                    <img src="./img/header__logo.png" alt="SpaceX logo">
+                </picture>
+            </a>
             <a href="#about" class="header__nav-link">ABOUT</a>
             <a href="#launches" class="header__nav-link">LAUNCHES</a>
             <a href="#follow" class="header__nav-link">FOLLOW US</a>

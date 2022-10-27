@@ -33,6 +33,9 @@ body {
   width: 100%;
   height: 100vh;
   background: url("./img/bg.jpg") no-repeat top center/ cover;
+  @supports (background: url("./img/bg.webp")) {
+    background: url("./img/bg.webp") no-repeat top center/cover;
+  }
 }
 
 .header__nav {
@@ -92,6 +95,9 @@ body {
   height: 110vh;
   background-color: var(--black);
   background: url("./img/about.jpg") no-repeat top center/ cover;
+  @supports (background: url("./img/about.webp")) {
+    background: url("./img/about.webp") no-repeat top center/cover;
+  }
 }
 
 .about__title {
