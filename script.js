@@ -27,15 +27,25 @@ const render = (launches) => {
     document.querySelector(".launches__layout").innerHTML += `
     <div class="launches__layout-cont">
       <div class="launches__layout-cont-block" onClick={showDetails(${i})}>
-          <p class="launches__details" id="launches__details">${
-            launches[i].details
-          }</p>
           <img src="${
             launches[i].image
           }" class="launches__img" alt="Image of Rocket Launch">
           <p class="launches__date">${new Date(
             launches[i].date
           ).toLocaleDateString()}</p>
+          <h2 class="launches__name">${launches[i].name}</h2>
+          <p class="launches__details">${launches[i].details}</p>
+          <a href="#modal">Details</a>
+          <div class="details" onClick={showDetails(${i})>Details...</div>
+      </div>
+    </div>
+    <div id="modal">
+        <div class="modal__window">
+            <a class="modal__close" href="#">X</a>
+            <h2>${launches[i].name}</h2>
+            <p>${launches[i].details}</p>
+        </div>
+    </div>
     `;
   }
 };
