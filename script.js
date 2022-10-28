@@ -26,7 +26,8 @@ const render = (launches) => {
   for (let i = 0; i < launches.length; i++) {
     document.querySelector(".launches__layout").innerHTML += `
     <div class="launches__layout-cont">
-      <div class="launches__layout-cont-block" onClick={showDetails(${i})}>
+      <div class="launches__layout-cont-block">
+      <div class="launches__link" onClick={showDetails(${i})}>
           <img src="${
             launches[i].image
           }" class="launches__img" alt="Image of Rocket Launch">
@@ -34,14 +35,12 @@ const render = (launches) => {
             launches[i].date
           ).toLocaleDateString()}</p>
           <h2 class="launches__name">${launches[i].name}</h2>
-          <p class="launches__details">${launches[i].details}</p>
-          <a href="#modal">Details</a>
-          <div class="details" onClick={showDetails(${i})>Details...</div>
+          </div>
       </div>
     </div>
-    <div id="modal">
+    <div class="modal" id="modal">
         <div class="modal__window">
-            <a class="modal__close" href="#">X</a>
+            <span class="modal__close" onClick={hideModal(${i})}>&times;</span>
             <h2>${launches[i].name}</h2>
             <p>${launches[i].details}</p>
         </div>
@@ -49,15 +48,28 @@ const render = (launches) => {
     `;
   }
 };
+
 const showDetails = (nth) => {
-  let details = document.getElementsByClassName("launches__details");
+  let details = document.getElementsByClassName(
+    "modal",
+    "modal__window",
+    "modal__close"
+  );
   for (i = 0; i < details.length; i++) {
     if (i == nth) {
-      details[i].classList.toggle("launches__details-visible");
+      details[i].classList.toggle("modal__show");
     }
   }
 };
 
+const hideModal = (nth) => {
+  let modal = document.getElementsByClassName("modal");
+  for (i = 0; i < modal.length; i++) {
+    if (i == nth) {
+      modal[i].classList.remove("modal__show");
+    }
+  }
+};
 getLaunches().then((launches) => {
   render(launches);
 });

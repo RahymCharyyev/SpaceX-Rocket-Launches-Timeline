@@ -168,54 +168,59 @@ body {
   transition: 2s;
 }
 
-/* .launches__name {
-  display: block;
-  margin-top: 20px;
+.launches__link {
+  text-align: center;
+  text-decoration: none;
+  color: var(--white);
 }
 
-.launches__date {
-  margin-top: 20px;
-}
-
-.launches__img,
-.launches__date {
-  display: block;
-}
-
-.launches__img-hidden,
-.launches__date-hidden,
-.launches__name-hidden {
-  display: none;
-} */
-
-#modal {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.335);
+  background-color: rgba(18, 18, 18, 0.826);
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .modal__window {
+  max-width: 500px;
   position: relative;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--black);
   padding: 4em 2em;
+  border-radius: 30px;
+}
+
+.modal__window h2 {
+  text-align: center;
+}
+
+.modal__window p {
+  margin-top: 5%;
+  line-height: 1.5em;
+  text-align: center;
 }
 
 .modal__close {
   position: absolute;
   top: -30px;
   right: 0;
+  text-decoration: none;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
 }
 
-#modal:not(:target) {
-  visibility: hidden;
-  opacity: 0;
+.modal__show {
+  visibility: visible;
+  opacity: 1;
 }
+
 /* Footer */
 
 .follow {
