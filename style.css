@@ -26,6 +26,7 @@ body {
   overflow-x: hidden;
   color: var(--white);
   background-color: var(--black);
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -33,6 +34,7 @@ body {
 .header {
   width: 100%;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .no-webp .header {
@@ -230,6 +232,7 @@ body {
   height: 5vh;
   display: flex;
   flex-direction: row;
+  text-align: center;
   justify-content: center;
 }
 

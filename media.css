@@ -78,6 +78,10 @@
   .about__text {
     left: 10%;
   }
+  .launches__layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
   .follow {
     max-width: 90vw;
     flex-wrap: wrap;
@@ -107,11 +111,19 @@
     max-width: 25vw;
     font-size: var(--h4);
   }
+  .webp .about {
+    background-position: left;
+    overflow-y: hidden;
+  }
   .about__title {
     top: 105%;
   }
   .about__text {
     top: 110%;
+  }
+  .launches__layout {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
   .launches__title {
     font-size: var(--h1);
@@ -131,5 +143,8 @@
   }
   .about__text {
     width: 60vw;
+  }
+  .follow a:not(:first-child) {
+    margin-left: 10%;
   }
 }
