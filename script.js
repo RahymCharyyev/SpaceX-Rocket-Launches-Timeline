@@ -25,9 +25,7 @@ async function getLaunches() {
 const render = (launches) => {
   for (let i = 0; i < launches.length; i++) {
     document.querySelector(".launches__layout").innerHTML += `
-    <div class="launches__layout-cont">
-      <div class="launches__layout-cont-block">
-      <div class="launches__link" onClick={showDetails(${i})}>
+    <div class="launches__layout-container" onClick={showDetails(${i})}>
           <img src="${
             launches[i].image
           }" class="launches__img" alt="Image of Rocket Launch">
@@ -35,8 +33,6 @@ const render = (launches) => {
             launches[i].date
           ).toLocaleDateString()}</p>
           <h2 class="launches__name">${launches[i].name}</h2>
-          </div>
-      </div>
     </div>
     <div class="modal" id="modal">
         <div class="modal__window">

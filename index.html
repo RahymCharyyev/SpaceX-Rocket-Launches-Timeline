@@ -88,5 +88,15 @@
 <script src="./nav.js"></script>
 <script src="./script.js"></script>
 <script src="./type.js"></script>
+<script src="./modernizr-custom.js"></script>
+<script>
+    Modernizr.on('webp', function (result) {
+        if (result) {
+            // supported
+        } else {
+            // not-supported
+        }
+    });
+</script>
 
 </html>
