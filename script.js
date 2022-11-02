@@ -1,7 +1,22 @@
-const BASE_URL = "https://api.spacexdata.com/v5/";
+const BASE_URL = "https://api.spacexdata.com/v5/launches/query";
+let limit = 12;
+let offset = 0;
+const data = {
+  query: {},
+  options: {
+    limit: limit,
+    offset: offset,
+  },
+};
 async function getLaunches() {
-  const resLaunches = await fetch(BASE_URL + "launches");
-  const launchesData = await resLaunches.json();
+  const resLaunches = await fetch(BASE_URL, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+  const launchesData = (await resLaunches.json()).docs;
   if (resLaunches.status !== 200) {
     return {
       message: alert(
@@ -21,7 +36,6 @@ async function getLaunches() {
   });
   return launches;
 }
-
 const render = (launches) => {
   for (let i = 0; i < launches.length; i++) {
     document.querySelector(".launches__layout").innerHTML += `
@@ -66,6 +80,16 @@ const hideModal = (nth) => {
     }
   }
 };
+
+function loadMore() {
+  getLaunches().then((launches) => {
+    render(launches);
+  });
+  limit += 12;
+  offset += 12;
+  console.log(limit, offset);
+}
+
 getLaunches().then((launches) => {
   render(launches);
 });

@@ -61,6 +61,7 @@ body {
   color: var(--white);
   text-decoration: none;
   align-self: center;
+  margin-top: 20px;
   transition: 0.5s;
 }
 
@@ -167,6 +168,14 @@ body {
 .launches__img {
   width: 150px;
   height: 150px;
+}
+
+.launches__button {
+  cursor: pointer;
+  font-size: var(--link);
+  color: (--white);
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 /* Modals */
