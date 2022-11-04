@@ -94,6 +94,15 @@ const loadMore = () => {
   });
 };
 
+let loadMoreBtn = document.querySelector(".launches__button");
+let loadMoreBtnClicks = 0;
+loadMoreBtn.addEventListener("click", function () {
+  loadMoreBtnClicks += 1;
+  if (loadMoreBtnClicks === 17) {
+    loadMoreBtn.classList.toggle("launches__button-hide");
+  }
+});
+
 getLaunches(12, 0).then((launches) => {
   render(launches);
 });

@@ -172,7 +172,7 @@ body {
 
 .launches__button {
   cursor: pointer;
-  font-size: var(--link);
+  font-size: var(--h4);
   color: (--white);
   text-align: center;
   margin-bottom: 50px;
@@ -180,7 +180,7 @@ body {
 }
 
 .launches__button-hide {
-  color: red;
+  visibility: hidden;
 }
 
 .launches__button:hover {
