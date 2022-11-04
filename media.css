@@ -137,14 +137,27 @@
     width: 100px;
     height: 25px;
   }
+  .header__title-h1 {
+    max-width: 50vw;
+  }
   .header__title-p {
-    max-width: 55vw;
+    max-width: 60vw;
     padding-bottom: 5px;
   }
   .about__text {
     width: 60vw;
   }
+  .launches__subtitle {
+    width: 250px;
+    margin: 0 auto;
+  }
+  .modal__window {
+    width: 200px;
+  }
+  .follow {
+    margin: 0 auto;
+  }
   .follow a:not(:first-child) {
-    margin-left: 10%;
+    margin-left: 5%;
   }
 }

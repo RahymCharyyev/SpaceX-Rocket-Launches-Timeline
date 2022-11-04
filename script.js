@@ -1,20 +1,26 @@
 const BASE_URL = "https://api.spacexdata.com/v5/launches/query";
 let limit = 12;
 let offset = 0;
-const data = {
-  query: {},
-  options: {
-    limit: limit,
-    offset: offset,
-  },
-};
-async function getLaunches() {
+// const data = {
+//   query: {},
+//   options: {
+//     limit: limit,
+//     offset: offset,
+//   },
+// };
+async function getLaunches(limit, offset) {
   const resLaunches = await fetch(BASE_URL, {
     headers: {
       "Content-Type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      query: {},
+      options: {
+        limit: limit,
+        offset: offset,
+      },
+    }),
   });
   const launchesData = (await resLaunches.json()).docs;
   if (resLaunches.status !== 200) {
@@ -81,15 +87,13 @@ const hideModal = (nth) => {
   }
 };
 
-function loadMore() {
-  getLaunches().then((launches) => {
+const loadMore = () => {
+  offset += 12;
+  getLaunches(12, offset).then((launches) => {
     render(launches);
   });
-  limit += 12;
-  offset += 12;
-  console.log(limit, offset);
-}
+};
 
-getLaunches().then((launches) => {
+getLaunches(12, 0).then((launches) => {
   render(launches);
 });

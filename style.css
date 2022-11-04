@@ -176,6 +176,15 @@ body {
   color: (--white);
   text-align: center;
   margin-bottom: 50px;
+  transition: 0.3s;
+}
+
+.launches__button-hide {
+  color: red;
+}
+
+.launches__button:hover {
+  color: var(--link_hover);
 }
 
 /* Modals */
