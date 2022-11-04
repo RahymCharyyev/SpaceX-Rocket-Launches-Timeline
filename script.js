@@ -1,39 +1,38 @@
 const BASE_URL = "https://api.spacexdata.com/v5/launches/query";
-let limit = 12;
-let offset = 0;
+let queryLimit = 12;
+let queryOffset = 0;
 async function getLaunches(limit, offset) {
-  const resLaunches = await fetch(BASE_URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-    body: JSON.stringify({
-      query: {},
-      options: {
-        limit: limit,
-        offset: offset,
+  try {
+    const resLaunches = await fetch(BASE_URL, {
+      headers: {
+        "Content-Type": "application/json",
       },
-    }),
-  });
-  const launchesData = (await resLaunches.json()).docs;
-  if (resLaunches.status !== 200) {
-    return {
-      message: alert(
-        "Error Getting Launches. May be API is blocked in your network. Check your internet connection and try again."
-      ),
-    };
+      method: "POST",
+      body: JSON.stringify({
+        query: {},
+        options: {
+          limit: limit,
+          offset: offset,
+        },
+      }),
+    });
+    const { docs, totalDocs } = await resLaunches.json();
+    let launches = docs.map((launch) => {
+      const image = launch.links.patch.small || "./img/launch.jpg";
+      const details = launch.details || "No details";
+      return {
+        name: launch.name,
+        image,
+        date: launch.date_local,
+        details,
+      };
+    });
+    return { launches, totalDocs };
+  } catch (error) {
+    alert(
+      "Error Getting Launches. Maybe API is blocked in your network. Check your internet connection and try again."
+    );
   }
-  let launches = launchesData.map((launch) => {
-    const image = launch.links.patch.small || "./img/launch.jpg";
-    const details = launch.details || "No details";
-    return {
-      name: launch.name,
-      image,
-      date: launch.date_local,
-      details,
-    };
-  });
-  return launches;
 }
 const render = (launches) => {
   for (let i = 0; i < launches.length; i++) {
@@ -77,20 +76,18 @@ const hideModal = (nth) => {
 };
 
 const loadMore = () => {
-  offset += 12;
-  getLaunches(12, offset).then((launches) => {
-    render(launches);
+  queryOffset += 12;
+  getLaunches(queryLimit, queryOffset).then((launches) => {
+    if (2 * queryLimit + queryOffset >= launches.totalDocs) {
+      let loadMoreBtn = document.querySelector(".launches__button");
+      loadMoreBtn.addEventListener("click", () => {
+        loadMoreBtn.classList.toggle("launches__button-hide");
+      });
+    }
+    render(launches.launches);
   });
 };
 
-let loadMoreBtn = document.querySelector(".launches__button");
-let loadMoreBtnClicks = 0;
-loadMoreBtn.addEventListener("click", () => {
-  loadMoreBtnClicks += 1;
-  if (loadMoreBtnClicks === 17)
-    loadMoreBtn.classList.toggle("launches__button-hide");
-});
-
-getLaunches(12, 0).then((launches) => {
-  render(launches);
+getLaunches(queryLimit, queryOffset).then((launches) => {
+  render(launches.launches);
 });
