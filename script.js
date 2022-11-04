@@ -1,13 +1,6 @@
 const BASE_URL = "https://api.spacexdata.com/v5/launches/query";
 let limit = 12;
 let offset = 0;
-// const data = {
-//   query: {},
-//   options: {
-//     limit: limit,
-//     offset: offset,
-//   },
-// };
 async function getLaunches(limit, offset) {
   const resLaunches = await fetch(BASE_URL, {
     headers: {
@@ -72,18 +65,14 @@ const showDetails = (nth) => {
     "modal__close"
   );
   for (i = 0; i < details.length; i++) {
-    if (i == nth) {
-      details[i].classList.toggle("modal__show");
-    }
+    if (i == nth) details[i].classList.toggle("modal__show");
   }
 };
 
 const hideModal = (nth) => {
   let modal = document.getElementsByClassName("modal");
   for (i = 0; i < modal.length; i++) {
-    if (i == nth) {
-      modal[i].classList.remove("modal__show");
-    }
+    if (i == nth) modal[i].classList.remove("modal__show");
   }
 };
 
@@ -96,11 +85,10 @@ const loadMore = () => {
 
 let loadMoreBtn = document.querySelector(".launches__button");
 let loadMoreBtnClicks = 0;
-loadMoreBtn.addEventListener("click", function () {
+loadMoreBtn.addEventListener("click", () => {
   loadMoreBtnClicks += 1;
-  if (loadMoreBtnClicks === 17) {
+  if (loadMoreBtnClicks === 17)
     loadMoreBtn.classList.toggle("launches__button-hide");
-  }
 });
 
 getLaunches(12, 0).then((launches) => {
