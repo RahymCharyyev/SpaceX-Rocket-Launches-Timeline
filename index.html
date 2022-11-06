@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="./normalize.css" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./media.css" />
+    <link rel="stylesheet" href="./loader.css" />
 </head>
 
 <body>
@@ -71,9 +72,10 @@
     <div class="launches" id="launches">
         <h2 class="launches__title">LAUNCHES</h2>
         <p class="launches__subtitle">*Click on each launch to know more about its details</p>
+        <div class="launches__loader"></div>
         <div class="launches__layout"></div>
         <div class="launches__modal"></div>
-        <div class="launches__button" onclick="loadMore()">Load More...</div>
+        <div class="launches__button" id="loader" onclick="loadMore()"></div>
     </div>
     <footer class="follow" id="follow">
         <a href="#header">SPACEX © 2022</a>

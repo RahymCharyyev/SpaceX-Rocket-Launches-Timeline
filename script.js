@@ -1,6 +1,9 @@
 const BASE_URL = "https://api.spacexdata.com/v5/launches/query";
 let queryLimit = 12;
 let queryOffset = 0;
+let loader = document.querySelector(".launches__loader");
+let loaderSmall = (document.getElementById("loader").innerHTML =
+  "Load More...");
 async function getLaunches(limit, offset) {
   try {
     const resLaunches = await fetch(BASE_URL, {
@@ -27,11 +30,13 @@ async function getLaunches(limit, offset) {
         details,
       };
     });
+    loader.classList.toggle("launches__loader-hide");
     return { launches, totalDocs };
   } catch (error) {
     alert(
       "Error Getting Launches. Maybe API is blocked in your network. Check your internet connection and try again."
     );
+    loader.classList.toggle("launches__loader");
   }
 }
 const render = (launches) => {
@@ -77,15 +82,25 @@ const hideModal = (nth) => {
 
 const loadMore = () => {
   queryOffset += 12;
-  getLaunches(queryLimit, queryOffset).then((launches) => {
-    if (2 * queryLimit + queryOffset >= launches.totalDocs) {
-      let loadMoreBtn = document.querySelector(".launches__button");
-      loadMoreBtn.addEventListener("click", () => {
-        loadMoreBtn.classList.toggle("launches__button-hide");
-      });
-    }
-    render(launches.launches);
-  });
+  loaderSmall = document.getElementById("loader").innerHTML = "Loading...";
+  try {
+    getLaunches(queryLimit, queryOffset).then((launches) => {
+      if (2 * queryLimit + queryOffset >= launches.totalDocs) {
+        let loadMoreBtn = document.querySelector(".launches__button");
+        loadMoreBtn.addEventListener("click", () => {
+          loadMoreBtn.classList.toggle("launches__button-hide");
+        });
+      }
+      render(launches.launches);
+      loaderSmall = document.getElementById("loader").innerHTML =
+        "Load More...";
+    });
+  } catch (error) {
+    alert(
+      "Error Getting Launches. Maybe API is blocked in your network. Check your internet connection and try again."
+    );
+  }
+  loader.classList.toggle("launches__loader-hide");
 };
 
 getLaunches(queryLimit, queryOffset).then((launches) => {
