@@ -82,6 +82,8 @@ const hideModal = (nth) => {
 const loadMore = () => {
   queryOffset += 12;
   loading = document.getElementById("loader").innerHTML = "Loading...";
+  loading = document.getElementById("loader").disabled = true;
+
   try {
     getLaunches(queryLimit, queryOffset).then((launches) => {
       if (2 * queryLimit + queryOffset >= launches.totalDocs) {
@@ -92,6 +94,7 @@ const loadMore = () => {
       }
       render(launches.launches);
       loading = document.getElementById("loader").innerHTML = "Load More...";
+      loading = document.getElementById("loader").disabled = false;
     });
   } catch (error) {
     alert(
