@@ -83,7 +83,7 @@ const loadMore = () => {
   queryOffset += 12;
   loading = document.getElementById("loader").innerHTML = "Loading...";
   loading = document.getElementById("loader").disabled = true;
-
+  loader.classList.toggle("launches__loader-hide");
   try {
     getLaunches(queryLimit, queryOffset).then((launches) => {
       if (2 * queryLimit + queryOffset >= launches.totalDocs) {
@@ -101,7 +101,6 @@ const loadMore = () => {
       "Error Getting Launches. Maybe API is blocked in your network. Check your internet connection and try again."
     );
   }
-  loader.classList.toggle("launches__loader-hide");
 };
 
 getLaunches(queryLimit, queryOffset).then((launches) => {
